@@ -61,4 +61,4 @@ jobs:
           draft: true
           prerelease: true
           generate_release_notes: true
-          name: : "TDM asdqwe"
+          name: "TDM asdqwe"
