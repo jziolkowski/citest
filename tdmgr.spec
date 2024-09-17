@@ -4,6 +4,25 @@
 import sys
 
 # _version = setuptools_scm.get_version(local_scheme='no-local-version')
+
+# os.name='nt'
+# sys.platform='win32'
+# platform.mac_ver()=('', ('', '', ''), '')
+# platform.system()='Windows'
+# platform.architecture()=('32bit', 'WindowsPE')
+
+# os.name='nt'
+# sys.platform='win32'
+# platform.mac_ver()=('', ('', '', ''), '')
+# platform.system()='Windows'
+# platform.architecture()=('64bit', 'WindowsPE')
+
+# os.name='posix'
+# sys.platform='darwin'
+# platform.mac_ver()=('13.6.9', ('', '', ''), 'x86_64')
+# platform.system()='Darwin'
+# platform.architecture()=('64bit', '')
+
 _suffix = f"_x64" if sys.maxsize > 2**32 else ""
 filename = f"tdmgr_{_suffix}"
 
