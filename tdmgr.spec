@@ -23,6 +23,12 @@ import sys
 # platform.system()='Darwin'
 # platform.architecture()=('64bit', '')
 
+# os.name='posix'
+# sys.platform='linux'
+# platform.mac_ver()=('', ('', '', ''), '')
+# platform.system()='Linux'
+# platform.architecture()=('64bit', 'ELF')
+
 _suffix = f"_x64" if sys.maxsize > 2**32 else ""
 filename = f"tdmgr_{_suffix}"
 
