@@ -43,8 +43,7 @@ jobs:
         shell: bash
         run: |
           brew install create-dmg
-          basename=$(basename *.app .app)
-          newfile="${basename}.dmg"
+          newfile=$(basename *.app .app).dmg
           create-dmg "dist/$newfile" dist
           rm dist/*.app
 
