@@ -71,11 +71,11 @@ jobs:
 
       - name: Download artifacts from build
         uses: actions/download-artifact@v3
-        with:
-          path: dist
       - name: ls
         shell: bash
-        run: ls -la
+        run: |
+          ls -la
+          ls -la binaries_build
 
   #     # Upload release assets: each file in `dist/` to the GitHub Release
   #     - name: Upload Release Assets
