@@ -40,9 +40,12 @@ jobs:
 
       - name: Create Mac .dmg
         if: matrix.os == 'macos-13'
+        shell: bash
         run: |
           brew install create-dmg
-          create-dmg dist/tdmgr_Mac_x64.dmg dist
+          basename=$(basename *.app .app)
+          newfile="${basename}.dmg"
+          create-dmg "dist/$newfile" dist
           rm dist/*.app
 
       - name: Upload binaries artifact to workflow
