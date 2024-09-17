@@ -47,6 +47,7 @@ jobs:
           name: binaries_build
           path: dist/*
       - name: ls
+        uses: bash
         run: ls -la
 
   # Draft-Release:
