@@ -1,0 +1,31 @@
+name: GitHub release
+
+on:
+  workflow_dispatch:
+
+jobs:
+  Binaries:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: windows-2019
+            arch: x86
+          - os: windows-2019
+            arch: x64
+          - os: macos-13
+            arch: x64
+          - os: macos-latest
+            arch: x64
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - name: Set up Python 3.8
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.8'
+          architecture: ${{ matrix.arch }}
+      - name: asd
+        run: python ostest.py
