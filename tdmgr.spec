@@ -9,8 +9,10 @@ arch = ""
 exe_extra_kwargs = {}
 
 if sys.platform == 'win32':
+    os = "win"
     arch, _ = platform.architecture()
 elif sys.platform == 'darwin':
+    os = "mac"
     _, _, arch = platform.mac_ver()
     exe_extra_kwargs = {"bundle_identifier": 'com.tasmota.tdmgr'}
 
@@ -44,7 +46,7 @@ elif sys.platform == 'darwin':
 # platform.system()='Darwin'
 # platform.architecture()=('64bit', '')
 
-filename = f"tdmgr_{arch}"
+filename = f"tdmgr_{os}_{arch}"
 
 block_cipher = None
 
