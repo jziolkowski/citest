@@ -6,6 +6,7 @@ import sys
 # _version = setuptools_scm.get_version(local_scheme='no-local-version')
 
 arch = ""
+extension = ""
 exe_extra_kwargs = {}
 
 if sys.platform == 'win32':
@@ -13,6 +14,7 @@ if sys.platform == 'win32':
     arch, _ = platform.architecture()
 elif sys.platform == 'darwin':
     os = "mac"
+    extension = ".app"
     _, _, arch = platform.mac_ver()
     exe_extra_kwargs = {"bundle_identifier": 'com.tasmota.tdmgr'}
 
@@ -46,7 +48,7 @@ elif sys.platform == 'darwin':
 # platform.system()='Darwin'
 # platform.architecture()=('64bit', '')
 
-filename = f"tdmgr_{os}_{arch}"
+filename = f"tdmgr_{os}_{arch}{extension}"
 
 block_cipher = None
 
