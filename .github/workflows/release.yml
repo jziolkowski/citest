@@ -38,12 +38,12 @@ jobs:
       - name: Build with PyInstaller
         run: pyinstaller --noconfirm --clean tdmgr.spec
 
-      - name: Create Mac .dmg
+      - name: Create .dmg
         if: matrix.os == 'macos-13'
         shell: bash
         run: |
           brew install create-dmg
-          newfile=$(basename *.app .app).dmg
+          newfile=$(basename dist/*.app .app).dmg
           create-dmg "dist/$newfile" dist
           rm dist/*.app
 
