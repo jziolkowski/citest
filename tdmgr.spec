@@ -1,9 +1,18 @@
 # -*- mode: python ; coding: utf-8 -*-
-
+import platform
 # import setuptools_scm
 import sys
 
 # _version = setuptools_scm.get_version(local_scheme='no-local-version')
+
+arch = ""
+exe_extra_kwargs = {}
+
+if sys.platform == 'win32':
+    arch, _ = platform.architecture()
+elif sys.platform == 'darwin':
+    _, _, arch = platform.mac_ver()
+    exe_extra_kwargs = {"bundle_identifier": 'com.tasmota.tdmgr'}
 
 # os.name='nt'
 # sys.platform='win32'
@@ -18,19 +27,24 @@ import sys
 # platform.architecture()=('64bit', 'WindowsPE')
 
 # os.name='posix'
+# sys.platform='linux'
+# platform.mac_ver()=('', ('', '', ''), '')
+# platform.system()='Linux'
+# platform.architecture()=('64bit', 'ELF')
+
+# os.name='posix'
 # sys.platform='darwin'
 # platform.mac_ver()=('13.6.9', ('', '', ''), 'x86_64')
 # platform.system()='Darwin'
 # platform.architecture()=('64bit', '')
 
 # os.name='posix'
-# sys.platform='linux'
-# platform.mac_ver()=('', ('', '', ''), '')
-# platform.system()='Linux'
-# platform.architecture()=('64bit', 'ELF')
+# sys.platform='darwin'
+# platform.mac_ver()=('14.6.1', ('', '', ''), 'arm64')
+# platform.system()='Darwin'
+# platform.architecture()=('64bit', '')
 
-_suffix = f"_x64" if sys.maxsize > 2**32 else ""
-filename = f"tdmgr_{_suffix}"
+filename = f"tdmgr_{arch}"
 
 block_cipher = None
 
@@ -60,4 +74,5 @@ exe = EXE(pyz,
           upx=True,
           upx_exclude=[],
           runtime_tmpdir=None,
-          console=True)
+          console=True,
+          **exe_extra_kwargs)
