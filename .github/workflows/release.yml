@@ -44,9 +44,10 @@ jobs:
         run: |
           brew install create-dmg
           newfile=$(basename dist/*.app .app).dmg
-          create-dmg "dist/$newfile" dist
+          create-dmg $newfile dist
           rm dist/*.app
-
+          cp /Users/runner/work/citest/citest/*.dmg dist
+          
       - name: Upload binaries artifact to workflow
         uses: actions/upload-artifact@v3
         with:
